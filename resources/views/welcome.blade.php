@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -131,3 +135,27 @@
         </div>
     </body>
 </html>
+<script>
+    $(document).ready(function(){
+        console.log("Cargado")
+        //getDOM2();
+        getSourceAsDOM("http://www.itescam.edu.mx/portal/reticula.php?nombre=ISIC-2010-224&s=plan");
+    });
+        
+    function getDOM2(){
+        var dom = document.getElementById(
+            "http://www.itescam.edu.mx/portal/reticula.php?nombre=ISIC-2010-224&s=plan")
+            .textContent = document.URL;
+            console.log(dom);
+    }
+
+    function getSourceAsDOM(url)
+    {
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("GET",url,false);
+        xmlhttp.send();
+        parser=new DOMParser();
+        console.log(parser.parseFromString(xmlhttp.responseText,"text/html"));
+        //return parser.parseFromString(xmlhttp.responseText,"text/html");      
+    }
+</script>

@@ -22,4 +22,8 @@ class DeviceController extends Controller
        
         return response()->json($device);      
     }
+
+    public function getLast($id){
+        return Device::where('device_id',$id)->orderBy('date','desc')->first()->poblacion_med;
+    }
 }
